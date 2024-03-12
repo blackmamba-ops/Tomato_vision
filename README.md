@@ -33,7 +33,7 @@ To use the model for disease classification:
 
 ## References
 
-- Dataset: [[Provide link to the dataset](https://www.kaggle.com/datasets/kaustubhb999/tomatoleaf)]
+- Dataset: [[Tomato Datset](https://www.kaggle.com/datasets/kaustubhb999/tomatoleaf)]
 
 ## Contributors
 
