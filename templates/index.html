@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomato Vision</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="static/script.js" defer></script>
+    <style>
+        /* Add this style to adjust margins and padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            overflow: hidden; /* Hide overflow from animated background */
+        }
+
+        .header {
+            background-color: black;
+            width: 100%; /* Set header width to 100% */
+            height: 100px;
+            color: white;
+            padding: 10px; /* Add padding for the header */
+            display: flex;
+            justify-content: space-between; /* Align links and image */
+            align-items: center; /* Center items vertically */
+        }
+
+        .links {
+            /* Adjust width for the links */
+            width: auto; /* Set width to auto to let content determine width */
+            text-align: right;
+            margin-right: 50px; /* Align links to the right */
+        }
+
+        .links a {
+            color: white; /* Set link color to white */
+            text-decoration: none;
+            font-family: 'Roboto', serif; /* Set the font family */
+            font-size: 20px; /* Set the font size */
+            margin-left: 10px; /* Add margin between links */
+            display: inline-block; /* Ensure links stay on the same line */
+        }
+
+        .image-section {
+            position: relative;
+            display: inline-block;
+            margin-bottom: -20px; /* Remove the bottom margin */
+            z-index: 2; /* Place the image on top of the animation */
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .buttons {
+            text-align: center; /* Align text to the center */
+            margin-bottom: 20px; /* Add margin below the text */
+        }
+
+        .buttons img {
+            display: block; /* Ensure the image behaves as a block element */
+            margin: 0 auto; /* Center the image horizontally */
+            width: 180px; 
+            height: auto;
+        }
+
+        .buttons h1 {
+            text-align: center; /* Center-align the heading */
+        }
+
+        .circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .circles li {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: rgba(254, 0, 0, 0.2);
+            animation: animate 25s linear infinite;
+            bottom: -150px;
+        }
+
+        .circles li:nth-child(1) {
+            left: 25%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+        }
+
+        .circles li:nth-child(2) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 2s;
+            animation-duration: 12s;
+        }
+
+        .circles li:nth-child(3) {
+            left: 70%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 4s;
+        }
+
+        .circles li:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+            animation-duration: 18s;
+        }
+
+        .circles li:nth-child(5) {
+            left: 65%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 0s;
+        }
+
+        .circles li:nth-child(6) {
+            left: 75%;
+            width: 110px;
+            height: 110px;
+            animation-delay: 3s;
+        }
+
+        .circles li:nth-child(7) {
+            left: 35%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 7s;
+        }
+
+        .circles li:nth-child(8) {
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            animation-delay: 15s;
+            animation-duration: 45s;
+        }
+
+        .circles li:nth-child(9) {
+            left: 20%;
+            width: 15px;
+            height: 15px;
+            animation-delay: 2s;
+            animation-duration: 35s;
+        }
+
+        .circles li:nth-child(10) {
+            left: 85%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 0s;
+            animation-duration: 11s;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+            }
+
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer img {
+            max-width: 200px;
+            height: auto;
+            margin-right: auto;
+        }
+
+        .footer-text {
+            margin-right: 20px;
+            text-align: center;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header section -->
+        <div class="header">
+            <img src="static\images\tomato2.png" alt="Header Image">
+            <div class="links">
+                <a href="">Home</a>
+                <a href="https://github.com/blackmamba-ops/Tomato_vision.git">GitHub</a>
+                <a href="https://colab.research.google.com/github/blackmamba-ops/Tomato_vision/blob/main/CNN_Project.ipynb">Run on Colab</a>
+                <a href="#" onclick="scrollToSection('about-us')">About Us</a>
+                <a href="https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fmail.google.com%2Fmail&ec=GAlAFw&hl=en&service=mail&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S-251099831%3A1710261480156923&theme=mn">Contact Us</a>
+            </div>
+        </div>
+
+        <!-- Image section -->
+        <div class="image-section">
+            <img src="static\images\tomato.webp">
+            <div class="foreground-text">
+                <h2 style="text-align: left; font-family: 'MavenPro', sans-serif; font-size: 44px;">Is your plant feeling under the weather?</h2>
+                <h3 style="text-align: left; font-family: 'MavenPro', sans-serif;">Our model can help diagnose the problem.</h3>
+                <h3 style="text-align: left; font-family: 'MavenPro', sans-serif;"><a href="https://youtu.be/8-uPCmHX3U0" style="color: white; text-decoration: none;">To Know More ↝</a></h3>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-text" id="about-us" style="color: black; margin-left: 20px; ">
+        <h1 style="text-align: left; margin-bottom: 20px; margin-top: 20px; font-size: 24px; font-family: 'MavenPro', sans-serif; ">What is Tomato Vision..?</h1>
+        <h2 style="text-align: left; font-size: 18px; font-family: 'Kalam', sans-serif;">    
+            <img src="static/images/vegetables.gif" style="float: right; max-width: 400px; height: auto; margin-right: 2px;">
+                In agriculture, maintaining the health of tomato plants is crucial for ensuring food security and economic stability. 
+            However, diseases and pests often threaten tomato crops, leading to significant yield losses. To address this,
+            modern technologies like deep learning and convolutional neural networks offer promising solutions. 
+
+            This project focuses on developing a CNN-based model for detecting diseases in tomato plants. 
+            By analyzing annotated images of healthy and diseased plants, the model learns to recognize signs of common diseases such 
+            as blight,spot,virus and mold.The goal is to provide farmers with a reliable tool for early disease detection and management. 
+            By integrating this model into agricultural practices, farmers can make informed decisions and improve crop productivity.
+            Trained on a diverse dataset consisting of approximately 5000 images, Tomato Vision has been meticulously crafted to recognize 
+            subtle signs of disease or distress in tomato plants. With an outstanding testing accuracy of 94%, this model stands as a beacon of reliability 
+            in the landscape.
+            <img src="static/images/Animation - 1710142634038.gif">
+        </h2>
+    </div>
+
+    <div class="area">
+        <!-- Animation circles and triangles -->
+        <div class="buttons">
+            <h1 style="text-align: center;">Image Classification</h1>
+            <img src="static/images/Animation - 1710146491114.gif">
+    
+            <!-- Add buttons for prediction and choose file -->
+            <div style="margin-top: 20px;">
+                <label for="fileInput" class="custom-file-upload">Choose File</label>  
+                <button name="predictButton" onclick="predict()">Predict</button>
+                <input type="file" id="fileInput" name="fileInput" onchange="previewImage(event)">
+                <img id="image-preview" class="image-preview" style="display: none;">
+                <div id="prediction-result"></div>
+
+            </div>
+        </div>
+
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: center; background-color: black;">
+        <img src="static/images/tomato1.png" alt="Footer Image" width="200" style="display: inline-block;">
+        <h3 style="display: inline-block; margin-left: 1px; color: white;">&copy; 2024 Tomato Vision All rights reserved.</h3>
+        <h3 style="display: inline-block; margin-left: 900px; color: white;">PCW7+4GV,
+            Christiansted,US Virgin Islands</h3>
+    </div>
+    
+    
+</body>
+</html>
+
+
